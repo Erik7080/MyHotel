@@ -1,0 +1,124 @@
+{% load staticfiles %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+
+
+     <title>MyHotel - The tailored room service</title>
+
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+      <!-- Jquery -->
+      <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+      <!-- Font Awesome CSS -->
+      <link rel="stylesheet" type="text/css" href="{% static 'mainapp/font/flaticon.css' %}">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+
+      <!-- Bootstrap CSS and My CSS file -->
+       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <link rel="stylesheet" type="text/css" href="{% static 'mainapp/style.css' %}">
+      <script src="{% static 'mainapp/script.js' %}"></script>
+  </head>
+
+
+  <body>
+
+    <!-- START nav -->
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	      <a class="navbar-brand" href="{% url 'index' %}">MyHotel</a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+	          <li class="nav-item"><a href="{% url 'homepage' %}" class="nav-link">Home</a></li>
+	          <li class="nav-item"><a href="{% url 'services' %}" class="nav-link">Services</a></li>
+	          <li class="nav-item"><a href="{% url 'reservation' %}" class="nav-link">Reservation</a></li>
+	          <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">About</a></li>
+	          <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
+
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+
+    {% block content %}
+
+
+    {% endblock %}
+
+     <!-- Footer with contacts and useful links -->
+    <footer class="ftco-footer ftco-bg-dark ftco-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">MyHotel</h2>
+              <p>The tailored room service. Where you build up your price according to your desires. From the student to the business man everyone can find his perfect solution.</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4 ml-md-5">
+              <h2 class="ftco-heading-2">Useful Links</h2>
+              <ul class="list-unstyled">
+
+                <li><a href="{% url 'room_single' %}" class="py-2 d-block">Rooms</a></li>
+                <li><a href="{% url 'services' %}"class="py-2 d-block">Services</a></li>
+                <li><a href="{% url 'reservation' %}" class="py-2 d-block">Reservation</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+             <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Privacy</h2>
+              <ul class="list-unstyled">
+
+                <li><a href="{% url 'about' %}"class="py-2 d-block">About Us</a></li>
+                <li><a href="{% url 'contact' %}" class="py-2 d-block">Contact Us</a></li>
+
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+            	<h2 class="ftco-heading-2">Have a Questions?</h2>
+            	<div class="block-23 mb-3">
+	              <ul>
+	                <li class="contact_item"><span class="fas  fa-map-marker-alt contacts"></span><span class="text">Mile End Rd, Bethnal Green, London E1 4NS, UK</span></li>
+	                <li><a href="{% url 'contact' %}"><span class="fas  fa-phone contacts"></span><span class="text">   +44 7340993198</span></a></li>
+	                <li><a href="{% url 'contact' %}"><span class="fas  fa-envelope contacts"></span><span class="text">myhotel.london@gmail.com</span></a></li>
+	              </ul>
+	            </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+
+            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Erik Filippa creation || Queen Mary University of London || ITMB degree
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+  </body>
+</html>

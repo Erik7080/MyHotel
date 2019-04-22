@@ -1,0 +1,115 @@
+{% extends "mainapp/base.html" %}
+{% load static %}
+{% block content %}
+<!-- Top image for every page -->
+    <section>
+    <div class="hero-wrap top_image" style="background-image: url('{% static "mainapp/images/E.jpg" %}');">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
+          <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+          	<div class="text">
+	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="{% url 'homepage' %}">Home</a></span> <span>About</span></p>
+	            <h1 class="mb-4 bread">All about us</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      </section>
+
+
+    <!-- Welcome message with picture on the side -->
+    <section class="ftco-section ftc-no-pb ftc-no-pt">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-5 p-md-5 img img-2 d-flex justify-content-center align-items-center " style="background-image: url('{% static "mainapp/images/G.jpg" %}');">
+
+					</div>
+					<div class="col-md-7 py-5 wrap-about  ftco-animate">
+	          <div class="heading-section heading-section-wo-line pt-md-5 pl-md-5 mb-5">
+	          	<div class="ml-md-0">
+		          	<span class="subheading">MyHotel - The tailored room service</span>
+		            <h2 class="mb-4">Welcome To Our Hotel</h2>
+	            </div>
+	          </div>
+	          <div class="pb-md-5 introduction_p">
+							<p>Innovative technologies within the hospitality sector enable people to find the most suitable
+                                Hotel and/or Accommodation. Many platforms allow clients to filter results by price, location and service quality.
+                                However, it is very challenging to find platforms that offer highly specific and tailored services.</p>
+							<p>The goal of MyHotel is to solve this problem. Here, You will be able to select among several services
+                                that are not usually present on other platforms. For instance, You can choose from fixed room prices
+                                according to the dimension and build on them Your price, based on the extras You would like. With MyHotel is
+                                possible to choose among different amenties of various type, from the mini-bar to a last generation console.
+                                This is likely to offer a more tailored experience as price will change accordingly.
+                                From the student to the business man everyone can find his perfect solution.</p>
+                            <p> This will increase the efficency of the Hotel under four main aspects:</p>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+    <!-- Services provided with icon above -->
+		<section class="ftco-section-services">
+      <div class="container">
+        <div class="row d-flex">
+          <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services py-4 d-block text-center">
+              <div class="d-flex justify-content-center">
+              	<div class="icon d-flex align-items-center justify-content-center">
+              		<i class="flaticon-service service-icon-service"></i>
+              	</div>
+              </div>
+              <div class="media-body p-2 mt-2">
+                <h3 class="heading mb-3">Availability</h3>
+                  <p>Our trained stuff will always be 24/7
+                      available for your necessities</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services py-4 d-block text-center">
+              <div class="d-flex justify-content-center">
+              	<div class="icon d-flex align-items-center justify-content-center">
+              		<i class="flaticon-reliability service-icon"></i>
+              	</div>
+              </div>
+              <div class="media-body p-2 mt-2">
+                <h3 class="heading mb-3">Reliability</h3>
+                <p>Thanks to our secure website your information are safe</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 d-flex align-sel Searchf-stretch ftco-animate">
+            <div class="media block-6 services py-4 d-block text-center">
+              <div class="d-flex justify-content-center">
+              	<div class="icon d-flex align-items-center justify-content-center">
+              		<i class="flaticon-piggy-bank service-icon"></i>
+              	</div>
+              </div>
+              <div class="media-body p-2 mt-2">
+                <h3 class="heading mb-3">Convenience</h3>
+                <p>Only take what is needed, without paying for useless services</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services py-4 d-block text-center">
+              <div class="d-flex justify-content-center">
+              	<div class="icon d-flex align-items-center justify-content-center">
+              		<i class="flaticon-sewing-machine service-icon"></i>
+              	</div>
+              </div>
+              <div class="media-body p-2 mt-2">
+                <h3 class="heading mb-3">Tailored service</h3>
+                <p>You build your experience, choosing only you needed services</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+{% endblock %}

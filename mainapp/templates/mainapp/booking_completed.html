@@ -1,0 +1,86 @@
+{% extends "mainapp/base.html" %}
+{% load static %}
+{% block content %}
+
+  <body>
+        <!-- Top image for every page -->
+    <section>
+    <div class="hero-wrap top_image" style="background-image: url('{% static "mainapp/images/E.jpg" %}');">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
+          <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+          	<div class="text">
+	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="{% url 'homepage' %}">Home</a></span> <span>Contact</span></p>
+	            <h1 class="mb-4 bread">Contact Us</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      </section>
+
+
+    <section class="ftco-section contact-section bg-light">
+      <div class="container">
+
+          <!-- Contact information at the top -->
+        <div class="row d-flex mb-5 contact-info">
+          <div class="col-md-12 mb-4">
+            <h2 class="h3">Contact Information</h2>
+          </div>
+          <div class="w-100"></div>
+          <div class="col-md-3 d-flex">
+          	<div class="info bg-white p-4">
+	            <span>Address:</span> <p style="color: black"> Mile End Rd, Bethnal Green, London E1 4NS, UK</p>
+	          </div>
+          </div>
+          <div class="col-md-3 d-flex">
+          	<div class="info bg-white p-4">
+	            <span>Phone:</span> <p style="color: black">+44 7340993198</p>
+	          </div>
+          </div>
+          <div class="col-md-3 d-flex">
+          	<div class="info bg-white p-4">
+	            <span>Email:</span> <p style="color: black">myhotel.london@gmail.com</p>
+	          </div>
+          </div>
+          <div class="col-md-3 d-flex">
+          	<div class="info bg-white p-4">
+	            <span>Website</span> <p style="color: black">yoursite.com</p>
+	          </div>
+          </div>
+        </div>
+          <!-- Contact form -->
+        <div class="row block-9">
+          <div class="col-md-6 order-md-last d-flex">
+           <section class="bg-white p-5 contact-form">
+              <h2 class="confirmation_message">Congratulation - Your booking has been submitted.</h2><br>
+                 <p > Congratulations, Your booking at MyHotel - London is complete.
+                     Do not hesitate to let us know if there is anything we can arrange for
+                     you before your arrival by contacting us. We wish you a pleasant travel
+                     to London and look forward to welcoming you.</p> </br>
+                    <p>With warm regards,
+                     The staff of MyHotel. </p><br>
+               <a href="{% url 'homepage' %}" class="send-message btn btn-primary py-3 px-5">Homepage</a>
+
+           </section>
+
+          </div>
+            <!-- Image at the side -->
+          <div class="col-md-6 d-flex">
+          	<div  class="bg-white customer-service">
+                <img class="d-block w-100 customer-service" src="{% static "mainapp/images/final.jpg" %}" alt="First slide">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+  </body>
+
+{% endblock %}

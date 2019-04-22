@@ -1,0 +1,441 @@
+{% extends "mainapp/base.html" %}
+{% load static %}
+{% block content %}
+
+<!-- Top image for every page -->
+
+    <section>
+    <div class="hero-wrap top_image" style="background-image: url('{% static "mainapp/images/E.jpg" %}');">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
+          <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+          	<div class="text">
+	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="{% url 'homepage' %}">Home</a></span> <span>Reservation</span></p>
+	            <h1 class="mb-4 bread">Make reservation</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      </section>
+
+    <!-- Booking section -->
+    <section class="ftco-section_homepage bg-light">
+        <div class="container">
+            <div class="row">
+            <!-- Start booking form -->
+                <form method="POST" action="{% url 'booking_confirm' %}">
+                {% csrf_token %}
+	            <div class="col-lg-12">
+                    <!-- Room available and relative information -->
+                    <div class="row mb-4 ml-5">
+		    			<div class="booking_room col-sm col-md-2 col-lg-3 mr-4 ftco-animate">
+		    				<div class="room">
+		    					<img class="img reservation_img d-flex justify-content-center align-items-center" src="{% static "mainapp/images/single.png" %}" alt="king_size_room">
+		    						<div class="icon d-flex justify-content-center align-items-center">
+		    							<span class="icon-search2"></span>
+		    						</div>
+		    					</a>
+		    					<div class="text p-3 text-center">
+		    						<h3 class="mb-3"><a href="{% url 'room_single' %}">Single size Room</a></h3>
+		    						<p><span class="price mr-2">£45.00</span> <span class="per">per night</span></p>
+		    						<ul class="list">
+		    							<li><span>Max:</span> 1 Persons</li>
+		    							<li><span>Size:</span> 34 m2</li>
+		    							<li><span>Bed:</span> 1 single</li>
+		    						</ul>
+		    					</div>
+		    				</div>
+		    			</div>
+		    			<div class="booking_room col-sm col-md-2 col-lg-3 mr-4 ftco-animate">
+		    				<div class="room">
+		    					<img class="img reservation_img d-flex justify-content-center align-items-center" src="{% static "mainapp/images/double.png" %}" alt="king_size_room">
+		    						<div class="icon d-flex justify-content-center align-items-center">
+		    							<span class="icon-search2"></span>
+		    						</div>
+
+		    					<div class="text p-3 text-center">
+		    						<h3 class="mb-3"><a href="{% url 'room_double' %}">Double size Room</a></h3>
+		    						<p><span class="price mr-2">£55.00</span> <span class="per">per night</span></p>
+		    						<ul class="list">
+		    							<li><span>Max:</span> 2 Persons</li>
+		    							<li><span>Size:</span> 40 m2</li>
+		    							<li><span>Bed:</span> 1 Double</li>
+		    						</ul>
+		    					</div>
+		    				</div>
+		    			</div>
+		    			<div class="booking_room col-sm col-md-2 col-lg-3 mr-4 ftco-animate">
+		    				<div class="room">
+		    					<img class="img reservation_img d-flex justify-content-center align-items-center" src="{% static "mainapp/images/twin.png" %}" alt="king_size_room">
+		    						<div class="icon d-flex justify-content-center align-items-center">
+		    							<span class="icon-search2"></span>
+		    						</div>
+		    					<div class="text p-3 text-center">
+		    						<h3 class="mb-3"><a href="{% url 'room_twin' %}">Twin size Room</a></h3>
+		    						<p><span class="price mr-2">£60.00</span> <span class="per">per night</span></p>
+		    						<ul class="list">
+		    							<li><span>Max:</span> 2 Persons</li>
+		    							<li><span>Size:</span> 45 m2</li>
+		    							<li><span>Bed:</span> 2 Single</li>
+		    						</ul>
+		    					</div>
+		    				</div>
+		    			</div>
+		    		</div>
+                    <!-- Side bar -->
+                    <div class="col-lg-12 sidebar">
+                        <div class="sidebar-wrap bg-light ftco-animate">
+                        <!-- Header and prices -->
+                            <h3 class="heading mb-4">
+                                Basic information
+
+                                <span class="final_price_tag"style="margin-left: 19%;">Total for extras:</span>
+                                <span class="final_price extra_price "> <input type="hidden" name="total_extra" value="5"> </span>
+                                <span class="final_price_tag ">Total for room:</span>
+                                <span  class="final_price total_price " > <input type="hidden" name="total_extra" value="5"></span>
+                            </h3>
+                            <div class="fields">
+                            <!-- Check in -->
+                            <input type="text" name="check_in" class="checkin_date booking_field" placeholder="Check In Date" value="{{ check_in }}" required>
+                            <!-- Check out -->
+                            <input type="text" name="check_out" class="checkout_date booking_field" placeholder="Check Out Date" value="{{ check_out }}" required>
+                            <!-- Room sizes -->
+                                <span class=" icon_reservation_room fas fa-chevron-down"></span>
+                                <select name="room_size" class="room_selector booking_field ">
+                                    <option value="{{ room_size }}">{{ room_size }}</option>
+                                        {% for room_types in rooms %}
+
+                                 <option value="{{ room_types }}">{{ room_types }}</option>
+                                             {% endfor %}
+                                </select>
+                            <!-- Room number -->
+                            <span class=" icon_reservation_guest  fas fa-chevron-down"></span>
+                                <select name="number_room" class="booking_field number_room_selector">
+                                     <option value="{{ number_room }}">{{ number_room }}</option>
+			                    	<option value="1">1 Room</option>
+			                      <option value="2">2 Rooms</option>
+			                      <option value="3">3 Rooms</option>
+			                      <option value="4">4 Rooms</option>
+			                      <option value="5">5 Rooms</option>
+                                </select>
+
+                            <!-- Book button -->
+                                <input type="submit" class="booking_button" value="Book">
+                                 <div class="form-group">
+                      </div>
+                            </div>
+                        </div>
+                    </div>
+                  <!-- Services available and price -->
+                     <section class="ftco-sections bg-light">
+    	<div class="container">
+            <!-- White container Section  -->
+            <!-- Third row  (discounted packs)  -->
+            <div class="row ">
+    			<div class="col-sm col-md-12 col-lg-12 ftco-animate">
+    				<div class="service_box">
+    					<div class=" white_service">
+                            <div class="pricing-entry img d-flex ftco-animate">
+                                <div class="img img_services" style="background-image: url('{% static "mainapp/images/piggy.jpg" %}');"></div>
+                                <div class="desc text service_padding">
+                                    <div class="d-flex text align-items-center">
+                                        <h3><span>Discounted packs</span></h3>
+                                        <span class="price ">£/Night</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-block">
+
+                                <span class="discounted_title">Technology packs</span>
+                               <ul class="service_list_reservation">
+                                    <li>Full Technology pack (All included) <span class="service_price_reservation ">£13.00<input class="checkbox_service" value="13" onclick="" type="checkbox"></span></li>
+                                    <li>Audio pack (Laptop,Speakers) <span class="service_price_reservation ">£3.00<input class="checkbox_service" value="3" onclick="" type="checkbox"></span></li>
+                                    <li>Movie pack (Tv, Streaming service) <span class="service_price_reservation ">£4.00<input class="checkbox_service" value="4" onclick="" type="checkbox"></span></li>
+                                    <li>IT pack (Laptop,Tablet) <span class="service_price_reservation ">£3.00<input class="checkbox_service" value="3" type="checkbox"></span></li>
+                                    <li>Traveller pack (Local Sim, Adapters) <span class="service_price_reservation ">£3.00<input class="checkbox_service" value="3" type="checkbox"></span></li>
+
+                                </ul>
+                                <span class="discounted_title">Comfort packs</span>
+                             <ul class="service_list_reservation">
+                                    <li>Extra Comfort (All Comfort extras included) <span class="service_price_reservation ">£10.00<input class="checkbox_service" value="10" onclick="" type="checkbox"></span></li>
+                                    <li>Sleep Well (Extra pillow, Comfort duvet)<span class="service_price_reservation ">£3.00<input class="checkbox_service" value="3" onclick="" type="checkbox"></span></li>
+                                    <li>Clean holiday ( Laundry, Daily cleaning)<span class="service_price_reservation ">£6.00<input class="checkbox_service" value="6" onclick="" type="checkbox"></span></li>
+                                </ul>
+                                <span class="discounted_title">Food&Drinks packs</span>
+                                <ul class="service_list_reservation">
+                                    <li>Party park ( Minibar, Appetizer, Champagne) <span class="service_price_reservation ">£20.00<input class="checkbox_service" value="20" onclick="" type="checkbox"></span></li>
+                                    <li>Early time pack ( Room breakfast, coffe machine)<span class="service_price_reservation ">£11.00<input class="checkbox_service" value="11" onclick="" type="checkbox"></span></li>
+                                </ul>
+                                <span class="discounted_title">Selfcare packs</span>
+                               <ul class="service_list_reservation">
+                                    <li>Basic cleaning (Shower gel, toothbursh/paste) <span class="service_price_reservation ">£2.00<input class="checkbox_service" value="2" onclick="" type="checkbox"></span></li>
+                                    <li>Shower pack (Shower gel, Conditioner, Bathrobe)<span class="service_price_reservation ">£4.00<input class="checkbox_service" value="4" onclick="" type="checkbox"></span></li>
+                                </ul>
+	        			    </div>
+    					</div>
+    				</div>
+    			</div>
+
+    		</div>
+            <!-- First row (Technology and Comfort) -->
+    		<div class="row service_boxes">
+    			<div class="col-sm col-md-6 col-lg-6 ftco-animate">
+    				<div class="service_box">
+    					<div class=" white_service">
+                            <!-- Technology -->
+                            <div class="pricing-entry img d-flex ftco-animate">
+                                <div class="img img_services" style="background-image: url('{% static "mainapp/images/tvdesk.png" %}');"></div>
+                                <div class="desc text service_padding">
+                                    <div class="d-flex text align-items-center">
+                                        <h3><span>Technology amenities</span></h3>
+                                        <span class="price ">£/Night</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-block single">
+                                <ul class="service_list_reservation">
+                                    <li>Tv <span class="service_price_reservation ">£3.00<input class="checkbox_service" value="3" onclick="" type="checkbox"></span></li>
+                                    <li>Laptop <span class="service_price_reservation ">£2.00<input class="checkbox_service" value="2" onclick="" type="checkbox"></span></li>
+                                    <li>Streaming service <span class="service_price_reservation ">£2.00<input class="checkbox_service" value="2" onclick="" type="checkbox"></span></li>
+                                    <li>Console <span class="service_price_reservation ">£3.00<input class="checkbox_service" value="3" type="checkbox"></span></li>
+                                    <li>Speakers<span class="service_price_reservation ">£2.00<input class="checkbox_service" value="2" type="checkbox"></span></li>
+                                    <li>Tablet<span class="service_price_reservation ">£2.00<input class="checkbox_service" value="2" onclick="" type="checkbox"></span></li>
+                                    <li>Local sim <span class="service_price_reservation ">£2.00<input class="checkbox_service" value="2" type="checkbox"></span></li>
+                                    <li>Adapters<span class="service_price_reservation ">£1.00<input class="checkbox_service" value="1" type="checkbox"></span></li>
+
+                                </ul>
+
+	        			    </div>
+    					</div>
+    				</div>
+    			</div>
+                <div class="col-sm col-md-6 col-lg-6 ftco-animate">
+    				<div class="service_box">
+    					<div class=" white_service">
+                            <!-- Comfort -->
+                            <div class="pricing-entry img d-flex ftco-animate">
+                                <div class="img img_services" style="background-image: url('{% static "mainapp/images/3.jpeg" %}');"></div>
+                                <div class="desc text service_padding">
+                                    <div class="d-flex text align-items-center">
+                                        <h3><span>Comfort amenities</span></h3>
+                                        <span class="price ">£/Night</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-block">
+                               <ul class="service_list_reservation">
+                                    <li>Extra pillow <span class="service_price_reservation ">£1.00<input class="checkbox_service" value="1" onclick="" type="checkbox"></span></li>
+                                    <li>Daily cleaning <span class="service_price_reservation ">£5.00<input class="checkbox_service" value="5" onclick="" type="checkbox"></span></li>
+                                    <li>Laundry <span class="service_price_reservation ">£1.00<input class="checkbox_service" value="1" onclick="" type="checkbox"></span></li>
+                                    <li>InRoom newspaper <span class="service_price_reservation ">£1.00<input class="checkbox_service" value="1" type="checkbox"></span></li>
+                                    <li>Luggage storage <span class="service_price_reservation ">£3.00<input class="checkbox_service" value="3" type="checkbox"></span></li>
+                                   <li>Extra comfort duvet <span class="service_price_reservation ">£2.00<input class="checkbox_service" value="2" type="checkbox"></span></li>
+
+                                </ul>
+	        			    </div>
+    					</div>
+    				</div>
+    			</div>
+    		</div>
+
+            <!-- Second row (Food&Drinks and Beauty) -->
+            <div class="row ">
+    			<div class="col-sm col-md-6 col-lg-6 ftco-animate">
+    				<div class="service_box">
+    					<div class=" white_service">
+                            <div class="pricing-entry img d-flex ftco-animate">
+                                <div class="img img_services" style="background-image: url('{% static "mainapp/images/food.jpeg" %}');"></div>
+                                <div class="desc text service_padding">
+                                    <div class="d-flex text align-items-center">
+                                        <h3><span>Food&Beverage</span></h3>
+                                        <span class="price ">£/Night</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-block">
+                               <ul class="service_list_reservation">
+                                    <li>MiniBar <span class="service_price_reservation ">£5.00<input class="checkbox_service" value="5" onclick="" type="checkbox"></span></li>
+                                    <li>Room Breakfast <span class="service_price_reservation ">£10.00<input class="checkbox_service" value="10" onclick="" type="checkbox"></span></li>
+                                    <li>Morning breakfast <span class="service_price_reservation ">£5.00<input class="checkbox_service" value="5" onclick="" type="checkbox"></span></li>
+                                    <li>Coffe Machine <span class="service_price_reservation ">£2.00<input class="checkbox_service" value="2" type="checkbox"></span></li>
+                                    <li>Appetizer <span class="service_price_reservation ">£7.00<input class="checkbox_service" value="7" type="checkbox"></span></li>
+                                   <li>Champagne <span class="service_price_reservation ">£10.00<input class="checkbox_service" value="10" type="checkbox"></span></li>
+
+                                </ul>
+	        			    </div>
+    					</div>
+    				</div>
+    			</div>
+                <div class="col-sm col-md-6 col-lg-6 ftco-animate">
+    				<div class="service_box">
+    					<div class=" white_service">
+                            <div class="pricing-entry img d-flex ftco-animate">
+                                <div class="img img_services" style="background-image: url('{% static "mainapp/images/cosmetics.jpeg" %}');"></div>
+                                <div class="desc text service_padding">
+                                    <div class="d-flex text align-items-center">
+                                        <h3><span>Beauty amenities</span></h3>
+                                        <span class="price ">£/Night</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-block">
+                            <ul class="service_list_reservation">
+                                    <li>Conditioner <span class="service_price_reservation ">£2.00<input class="checkbox_service" value="2" onclick="" type="checkbox"></span></li>
+                                    <li>Shower gel <span class="service_price_reservation ">£1.00<input class="checkbox_service" value="1" onclick="" type="checkbox"></span></li>
+                                    <li>Gel <span class="service_price_reservation ">£1.00<input class="checkbox_service" value="1" onclick="" type="checkbox"></span></li>
+                                    <li>Bathrobe <span class="service_price_reservation ">£2.00<input class="checkbox_service" value="2" onclick="" type="checkbox"></span></li>
+                                    <li>Beauty masks <span class="service_price_reservation ">£2.00<input class="checkbox_service" value="2" onclick="" type="checkbox"></span></li>
+                                    <li>Hair straighteners <span class="service_price_reservation ">£3.00<input class="checkbox_service" value="3" type="checkbox"></span></li>
+                                    <li>Toothbrush/Paste <span class="service_price_reservation ">£1.00<input class="checkbox_service" value="1" type="checkbox"></span></li>
+
+                                </ul>
+	        			    </div>
+    					</div>
+    				</div>
+    			</div>
+    		</div>
+
+    	</div>
+    </section>
+                      <!-- Extra service required-->
+                    <div class="row ">
+    			        <div class="col-sm col-md-12 col-lg-12 ftco-animate">
+    				<div class="service_box">
+    					<div class=" white_service">
+                            <div class="pricing-entry img d-flex ftco-animate">
+                                <div class="desc text service_padding">
+                                    <div class="d-flex text align-items-center">
+                                        <h3><span>Indicates extra services required____</span></h3>
+                                        <span class="booking_heading">The service will not be included in this bill but at the end of the stay</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-block reservation_packs">
+                                <div class="block">
+                                <label class="discounted_title_booking ">Extra service:</label>
+
+                                     <input type="text" class="booking_field" style="width: 56%;" placeholder="Your personal request">
+
+                                    </div>
+	        			    </div>
+    					</div>
+    				</div>
+    			</div>
+    		        </div>
+                </div>
+                 </form>
+            </div>
+
+	        </div>
+		    </div>
+
+    	</div>
+    </section>
+    <script>
+      price = 0;
+      nights = 0;
+      $(".extra_price").html(price + "£ +")
+      change_price()
+
+
+
+      $('select.room_selector, .number_room_selector,.booking_field').change(function () {
+                 var any = $('.room_selector').val()
+                 var number_rooms = $('.number_room_selector').val()
+                 var check_in = $('.checkin_date').val()
+                 var check_out = $('.checkout_date').val()
+                 console.log(check_in, check_out)
+                 $.ajax({
+                     type: "POST",
+                     url: 'filter_room_prices/',
+                     data: {
+                         'any': any,
+                         'number_rooms': number_rooms,
+                         'check_in': check_in,
+                         'check_out': check_out,
+                         'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val(),
+
+                     },
+                     success: filter_price, change_price,
+                     error: function () {
+                         alert("error")
+                     }
+                 });
+             });
+
+      $('select.room_selector, .number_room_selector,.checkin_date,.checkout_date').ready(function () {
+                 var any = "{{ room_size }}"
+                 var number_rooms = "{{ number_room }}"
+                 var check_in = "{{ check_in }}"
+                 var check_out = "{{ check_out }}"
+
+                 $.ajax({
+                     type: "POST",
+                     url: 'filter_room_prices/',
+                     data: {
+                         'any': any,
+                         'number_rooms': number_rooms,
+                         'check_in': check_in,
+                         'check_out': check_out,
+                         'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val(),
+
+                     },
+                     success: filter_price,
+                     error: function () {
+                         alert("error")
+                     }
+                 });
+             });
+
+      function change_price() {
+
+       $('.checkbox_service').click(function() {
+                   var favorite = [];
+                   $.each($("input[class='checkbox_service']:checked"), function() {
+                       favorite.push($(this).val());
+
+                   });
+                   price = 0
+
+                   for (var i = 0; i < favorite.length; i++) {
+                       price += parseInt(favorite[i])
+
+                   }
+                   console.log(Json4)
+                   $(".extra_price").html(price * Json4+ "£ +")
+
+
+                     });
+       }
+
+
+      function filter_price(response) {
+
+                 // Change the price per night of the TOTAL
+                 $(".total_price").empty()
+
+                 var Json = response
+                 Json1 = JSON.parse(Json['price_night'])
+                 Json2 = JSON.parse(Json['day_total'])
+                 Json3 = JSON.parse(Json['numb_rooms'])
+                 Json4 = JSON.parse(Json['nights'])
+
+                 room_total = ""
+                 for (var i = 0; i < Json1.length; i++) {
+                     room_total += (Json1[i]) * Json3 * Json4 + '£'
+                 }
+                 $(".total_price").html(room_total)
+
+             }
+
+
+
+
+
+
+
+    </script>
+
+{% endblock %}

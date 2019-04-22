@@ -1,0 +1,270 @@
+{% extends "mainapp/base.html" %}
+{% load static %}
+{% block content %}
+
+  <head>
+
+  </head>
+  <body>
+
+
+    <!-- Carousel section -->
+    <section class="home-slider owl-carousel">
+
+        <div id="carouselHomepage" class="carousel slide carousel-fade" data-ride="carousel" data-pause="false" data-interval="4000">
+        <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="{% static "mainapp/images/A.jpg" %}" alt="First slide">
+        <div class="carousel-caption d-none d-md-block">
+             <h1 class="mb-3">Welcome To MyHotel</h1>
+             <h2>Hotels &amp; Resorts</h2>
+        </div>
+    </div>
+
+    <div class="carousel-item">
+      <img class="d-block w-100" src="{% static "mainapp/images/C.jpg" %}" alt="Second slide">
+        <div class="carousel-caption d-none d-md-block">
+             <h1 class="mb-3">Enjoy A Luxury Experience</h1>
+	            <h2>Join With Us</h2>
+        </div>
+    </div>
+  </div>
+</div>
+    </section>
+
+
+    <!-- Booking section overlaying the carousel -->
+    <section class="ftco-booking">
+
+    	<div class="container">
+    		<div class="row">
+    			<div class="col-lg-12">
+    				<form method="POST" action="{% url 'reservation' %}" class="booking-form">
+                        {% csrf_token %}
+	        		<div class="row">
+	        			<div class="col-md-3 d-flex">
+	        				<div class="form-group p-4 align-self-stretch d-flex align-items-end">
+                                <!-- Check In field -->
+	        					<div class="wrap">
+				    					<label >Check-in Date</label>
+                                    <input type="text" name="check_in"  required class=" CheckInDatePicker form-control checkin_date" placeholder="Check-in date" >
+			    					</div>
+			    				</div>
+	        			</div>
+	        			<div class="col-md-3 d-flex">
+	        				<div class="form-group p-4 align-self-stretch d-flex align-items-end">
+                                <!-- Check Out field -->
+	        					<div class="wrap">
+				    					<label for="#">Check-out Date</label>
+				    					<input type="text" name="check_out" required class=" CheckInDatePicker form-control checkout_date" placeholder="Check-out date" >
+
+			    				</div>
+			    				</div>
+	        			</div>
+	        			<div class="col-md d-flex">
+	        				<div class="form-group p-4 align-self-stretch d-flex align-items-end">
+                                <!-- Room selector -->
+                                <div class="wrap">
+			      					<label for="#">Room size</label>
+			      					<div class="form-field">
+			        					<div class="select-wrap">
+			                    <div class="icon_homepage_menu"><span class="fas fa-chevron-down"></span></div>
+			                    <select name="room_size" id="" class="form-control">
+			                    	{% for room_types in rooms %}
+                                 <option value="{{ room_types }}">{{ room_types }}</option>
+                                             {% endfor %}
+			                    </select>
+			                  </div>
+				              </div>
+				            </div>
+		              </div>
+	        			</div>
+	        			<div class="col-md d-flex">
+	        				<div class="form-group p-4 align-self-stretch d-flex align-items-end">
+                                <!-- Rooms number -->
+	        					<div class="wrap">
+			      					<label for="#">Guests</label>
+			      					<div class="form-field">
+			        					<div class="select-wrap">
+			                    <div class="icon_homepage_menu"><span class="fas fa-chevron-down"></span></div>
+			                    <select name="number_room" id="" class="form-control" >
+			                    	<option value="1">1 Room</option>
+			                      <option value="2">2 Rooms</option>
+			                      <option value="3">3 Rooms</option>
+			                      <option value="4">4 Rooms</option>
+			                      <option value="5">5 Rooms</option>
+			                      <option value="6">6 Rooms</option>
+			                    </select>
+			                  </div>
+				              </div>
+				            </div>
+		              </div>
+	        			</div>
+	        			<div class="col-md d-flex">
+	        				<div class="form-group d-flex align-self-stretch">
+			              <input type="submit" value="Check Availability" class="btn btn-primary py-3 px-4 align-self-stretch">
+			            </div>
+	        			</div>
+	        		</div>
+	        	</form>
+	    		</div>
+    		</div>
+    	</div>
+    </section>
+
+    <!-- Welcome message with picture on the side -->
+    <section class="ftco-section_homepage ftc-no-pb ftc-no-pt">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-5 p-md-5 img img-2 d-flex justify-content-center align-items-center " style="margin-top: 64px; background-image: url('{% static "mainapp/images/G.jpg" %}');">
+
+					</div>
+					<div class="col-md-7 py-5 wrap-about_homepage  ftco-animate">
+	          <div class="heading-section heading-section-wo-line pt-md-5 pl-md-5 mb-5">
+	          	<div class="ml-md-0">
+		          	<span class="subheading">MyHotel - The tailored room service</span>
+		            <h2 class="mb-4">Welcome To Our Hotel</h2>
+	            </div>
+	          </div>
+	          <div class="pb-md-5 introduction_p">
+
+							<p>Innovative technologies within the hospitality sector enable people to find the most suitable
+                                Hotel and/or Accommodation. Many platforms allow clients to filter results by price, location and service quality.
+                                However, it is very challenging to find platforms that offer highly specific and tailored services.</p>
+							<p>The goal of MyHotel is to solve this problem. Here, You will be able to select among several services
+                                that are not usually present on other platforms. For instance, You can choose from fixed room prices
+                                according to the dimension and build on them Your price, based on the extras You would like. With MyHotel is
+                                possible to choose among different amenties of various type, from the mini-bar to a last generation console.
+                                This is likely to offer a more tailored experience as price will change accordingly.
+                                From the student to the business man everyone can find his perfect solution.</p>
+                            <p> This will increase the efficency of the Hotel under four main aspects:</p>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+    <!-- Services provided with icon above -->
+		<section class="ftco-section-services">
+      <div class="container">
+        <div class="row d-flex">
+          <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services py-4 d-block text-center">
+              <div class="d-flex justify-content-center">
+              	<div class="icon d-flex align-items-center justify-content-center">
+              		<i class="flaticon-service service-icon-service"></i>
+              	</div>
+              </div>
+              <div class="media-body p-2 mt-2">
+                <h3 class="heading mb-3">Availability</h3>
+                  <p>Our trained stuff will always be 24/7
+                      available for your necessities</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services py-4 d-block text-center">
+              <div class="d-flex justify-content-center">
+              	<div class="icon d-flex align-items-center justify-content-center">
+              		<i class="flaticon-reliability service-icon"></i>
+              	</div>
+              </div>
+              <div class="media-body p-2 mt-2">
+                <h3 class="heading mb-3">Reliability</h3>
+                <p>Thanks to our secure website your information are safe</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 d-flex align-sel Searchf-stretch ftco-animate">
+            <div class="media block-6 services py-4 d-block text-center">
+              <div class="d-flex justify-content-center">
+              	<div class="icon d-flex align-items-center justify-content-center">
+              		<i class="flaticon-piggy-bank service-icon"></i>
+              	</div>
+              </div>
+              <div class="media-body p-2 mt-2">
+                <h3 class="heading mb-3">Convenience</h3>
+                <p>Only take what is needed, without paying for useless services</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services py-4 d-block text-center">
+              <div class="d-flex justify-content-center">
+              	<div class="icon d-flex align-items-center justify-content-center">
+              		<i class="flaticon-sewing-machine service-icon"></i>
+              	</div>
+              </div>
+              <div class="media-body p-2 mt-2">
+                <h3 class="heading mb-3">Tailored service</h3>
+                <p>You build your experience, choosing only you needed services</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Rooms available, price and details  -->
+    <section class="ftco-sections bg-light">
+    	<div class="container">
+				<div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 heading-section room-dash text-center ftco-animate">
+            <h2 class="mb-4">Our Rooms</h2>
+              <p class="room_sub_heading">(the prices underneath, indicate only the empty room, you then have to add the extra services)</p>
+          </div>
+        </div>
+    		<div class="row">
+    			<div class="col-sm col-md-6 col-lg-4 ftco-animate">
+    				<div class="room">
+    					<img class="img d-flex justify-content-center align-items-center" src="{% static "mainapp/images/single.png" %}" alt="king_size_room">
+    						<div class="icon d-flex justify-content-center align-items-center">
+    							<span class="icon-search2"></span>
+    						</div>
+    					<div class="text p-3 text-center">
+    						<h3 class="mb-3"><a href="{% url 'room_single' %}">Single size Room</a></h3>
+    						<p><span class="price mr-2">£45.00</span> <span class="per">per night</span></p>
+    						<hr>
+    						<p class="pt-1"><a href="{% url 'room_single' %}" class="btn-custom">View Room Details <i class="fas fa-arrow-right"></i></a></p>
+    					</div>
+    				</div>
+    			</div>
+    			<div class="col-sm col-md-6 col-lg-4 ftco-animate">
+    				<div class="room">
+    					<img class="img d-flex justify-content-center align-items-center" src="{% static "mainapp/images/double.png" %}" alt="king_size_room">
+    						<div class="icon d-flex justify-content-center align-items-center">
+    							<span class="icon-search2"></span>
+    						</div>
+    					<div class="text p-3 text-center">
+    						<h3 class="mb-3"><a href="{% url 'room_double' %}">Double size Room</a></h3>
+    						<p><span class="price mr-2">£55.00</span> <span class="per">per night</span></p>
+    						<hr>
+    						<p class="pt-1"><a href="{% url 'room_double' %}" class="btn-custom">View Room Details <i class="fas fa-arrow-right"></i></a></p>
+    					</div>
+    				</div>
+    			</div>
+    			<div class="col-sm col-md-6 col-lg-4 ftco-animate">
+    				<div class="room">
+    					<img class="img d-flex justify-content-center align-items-center" src="{% static "mainapp/images/twin.png" %}" alt="king_size_room">
+    						<div class="icon d-flex justify-content-center align-items-center">
+    							<span class="icon-search2"></span>
+    						</div>
+    					<div class="text p-3 text-center">
+    						<h3 class="mb-3"><a href="{% url 'room_twin' %}">Twin size Room</a></h3>
+    						<p><span class="price mr-2">£60.00</span> <span class="per">per night</span></p>
+    						<hr>
+    						<p class="pt-1"><a href="{% url 'room_twin' %}" class="btn-custom">View Room Details <i class="fas fa-arrow-right"></i></a></p>
+    					</div>
+    				</div>
+    			</div>
+
+    		</div>
+    	</div>
+    </section>
+
+  </body>
+</html>
+
+
+{% endblock %}

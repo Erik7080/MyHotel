@@ -1,0 +1,85 @@
+{% extends "mainapp/base.html" %}
+{% load static %}
+{% block content %}
+
+<!-- Top image for every page -->
+    <section>
+    <div class="hero-wrap top_image" style="background-image: url('{% static "mainapp/images/E.jpg" %}');">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
+          <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+          	<div class="text">
+	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="{% url 'homepage' %}">Home</a></span> <span>Double</span></p>
+	            <h1 class="mb-4 bread">Contact Us</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      </section>
+
+<section class="ftco-section_homepage">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 ">
+          	<div class="row">
+                <!-- Room Image -->
+          		<div class="col-md-12 ftco-animate">
+          			<h2 class="mb-4">Double size Room</h2>
+                    <div class="room-img" style="background-image: url('{% static "mainapp/images/double.png" %}');"></div>
+          		</div>
+
+                <!-- Room description -->
+          		<div class="col-md-12 room-single mt-4 mb-5 ftco-animate">
+                    <p>
+                        This room is perfect for those single individuals who require some extra space
+                        or for those couples who want to share a romantic and comfortable room together.
+                        This wonderful 40m2 room offer a elegant solution for various type of voyagers
+                    </p>
+                    <div class="d-md-flex mt-4 mb-4 ml-md-3">
+                            <span style="margin-right: 2%">Max: 2 Persons</span>
+                             <span style="margin-right: 2%">Size: 40 m2</span>
+                           <span>Bed: 1 double size</span>
+                    </div>
+                    <a href="{% url 'reservation' %}" class="btn btn-primary py-3 px-4 align-self-stretch">Make a booking</a>
+          		</div>
+
+                <!-- Other Rooms available -->
+
+          	</div>
+          </div>
+            <div class="col-lg-3 room-single ftco-animate mb-5 ml-5 mt-3">
+                <h5 class="mb-4">Available rooms</h5>
+          			<div class="row">
+                        <div class="col-sm col-md-6 mb-4 ftco-animate">
+                            <div class="room_small">
+    					        <img class="img d-flex justify-content-center align-items-center" src="{% static "mainapp/images/single.png" %}" alt="king_size_room">
+    					        <div class="text p-3 text-center">
+                                    <h3 class="mb-3"><a href="{% url 'room_single' %}">Single size Room</a></h3>
+                                    <p><span class="price mr-2">$120.00</span> <span class="per">per night</span></p>
+                                    <hr>
+                                    <p class="pt-1"><a href="{% url 'room_single' %}" class="btn-custom">View Room Details <i class="fas fa-arrow-right"></i></a></p>
+    					        </div>
+    				</div>
+                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm col-md-6 ftco-animate">
+                            <div class="room_small">
+    					<img class="img d-flex justify-content-center align-items-center" src="{% static "mainapp/images/twin.png" %}" alt="king_size_room">
+    					<div class="text p-3 text-center">
+    						<h3 class="mb-3"><a href="{% url 'room_twin' %}">Twin size Room</a></h3>
+    						<p><span class="price mr-2">$120.00</span> <span class="pernight">per night</span></p>
+    						<hr>
+    						<p class="pt-1"><a href="{% url 'room_twin' %}" class="btn-custom">View Room Details <i class="fas fa-arrow-right"></i></a></p>
+    					</div>
+    				</div>
+                        </div>
+                    </div>
+          		</div>
+        </div>
+      </div>
+    </section>
+
+{% endblock %}
